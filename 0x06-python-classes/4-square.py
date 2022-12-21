@@ -1,43 +1,43 @@
 #!/usr/bin/python3
-""" class Square that defines a square"""
+
+"""A module that defines a square """
 
 class Square:
-    """ class Square that defines a square"""
-    def __init__(self, size=0):
-        """ init square
+    """A class that represents a square"""
 
-    Args:
-        value (int): size of the square.
-    """
-    self.size = size
-
-    @property
-    def size(self):
-        """int: private size.
-
-         Returns:
-             Private size.
+     def __init__(self, size=0):
+         """Initializing this square class
+         Args:
+             size: represnets the size of the square defined
+         Raises:
+             TypeError: if size is not integer
+             ValueError: if size is less than zero
          """
-         return self.__size
 
-    @size.setter
-    def size(self, value):
-        """Sets value into size, must be int.
+         if not isinstance(size, int):
+             raise TypeError('size must be an integer')
+         if size < 0:
+             raise ValueError('size must be >= 0')
 
-        Args:
-            value (int): size of the square.
-        """
-        if type(value) is not int:
-            raise TypeError('size must be an integer')
-        elif value < 0:
-            raise ValueError('size must be >= 0')
-        else:
-            self.__size = value  #: size of the square
+         self.__size = size
 
-    def area(self):
-        """returns the area
+      @property
+      def size(self):
+          """Retrieves size of square"""
 
-        Returns:
-            area.
-        """
-        return self.__size**2
+          return self.__size
+
+       @size.setter
+       def size(self, value):
+           if not isinstance(value, int):
+               raise TypeError('size must be an integer') 
+           if value < 0:
+               raise ValueError('size must be >= 0')
+           self.__size = value
+
+       def area(self):
+           """
+           Calculate area of the square
+           Returns: The square of the size
+           """
+           return (self.__size ** 2)
